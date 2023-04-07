@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Form(props) {
   const { addMember } = props;
 
-  const emtyData = {
+  const emptyData = {
     isim: "",
     soyisim: "",
     email: "",
     rol: "",
   };
 
-  const [formData, setFormData] = useState(emtyData);
+  const [formData, setFormData] = useState(emptyData);
   const [isEditting, setIsEditting] = useState(false);
 
   function handleOnChange(event) {
@@ -21,11 +21,15 @@ export default function Form(props) {
 
   function submitHandler(e) {
     e.preventDefault();
+    isEditting ? props.uyeDuzenle(formData) : addMember(formData);
     addMember(formData);
   }
 
   useEffect(() => {
-    setFormData(props.duzenlenecekUye);
+    props.duzenlenecekUye
+      ? setFormData(props.duzenlenecekUye)
+      : setFormData(emptyData);
+    props.duzenlenecekUye ? setIsEditting(true) : setIsEditting(false);
   }, [props.duzenlenecekUye]);
 
   return (
@@ -73,7 +77,10 @@ export default function Form(props) {
           />
         </div>
         <span>
-          <input type="submit" value="Gönder" />
+          <input type="submit" value={isEditting ? "Kaydet" : "Gönder"} />
+        </span>
+        <span>
+          <button onClick={() => setFormData(emptyData)}>Reset </button>
         </span>
       </form>
     </div>

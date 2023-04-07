@@ -10,7 +10,6 @@ function App() {
       rol: "frontend dev",
     },
   ]);
-  const [duzenlenecekUye, setDuzenlenecekUye] = useState([]);
 
   function addMember(newMember) {
     setMembers([...members, newMember]);
@@ -18,18 +17,17 @@ function App() {
 
   console.log(members);
 
-  /*function handleSubmit(event) {
-    event.preventDefault();
-    console.log(event);
-  }
-*/
-
   function handleEdit(member, i) {
     setDuzenlenecekUye(member);
   }
 
+  const [duzenlenecekUye, setDuzenlenecekUye] = useState({});
+
   function uyeDuzenle(editedMember) {
-    [...members].map((member) => editedMember);
+    const updatedMembers = members.map((member) =>
+      member === duzenlenecekUye ? editedMember : member
+    );
+    setMembers(updatedMembers);
   }
 
   return (
