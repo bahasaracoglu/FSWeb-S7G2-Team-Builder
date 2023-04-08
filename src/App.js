@@ -9,19 +9,33 @@ function App() {
       email: "bhsrcgl@gmail.com",
       rol: "frontend dev",
     },
+    {
+      isim: "ziyacan",
+      soyisim: "aydin",
+      email: "ziyacann@gmail.com",
+      rol: "backend dev",
+    },
+    {
+      isim: "kerem",
+      soyisim: "karaman",
+      email: "karamann@gmail.com",
+      rol: "full stack dev",
+    },
   ]);
 
+  const [duzenlenecekUye, setDuzenlenecekUye] = useState();
+  const [isEditting, setIsEditting] = useState(false);
   function addMember(newMember) {
     setMembers([...members, newMember]);
   }
 
   console.log(members);
 
-  function handleEdit(member, i) {
+  const handleEdit = (member, i) => {
     setDuzenlenecekUye(member);
-  }
-
-  const [duzenlenecekUye, setDuzenlenecekUye] = useState({});
+    setIsEditting(true);
+  };
+  console.log(duzenlenecekUye);
 
   function uyeDuzenle(editedMember) {
     const updatedMembers = members.map((member) =>
@@ -37,12 +51,14 @@ function App() {
         duzenlenecekUye={duzenlenecekUye}
         uyeDuzenle={uyeDuzenle}
       />
+
       <ul>
         {members.map((member, i) => {
+          const { isim, soyisim, email, rol } = member;
           return (
             <div key={i}>
               <li>
-                {member.isim} {member.soyisim} {member.email} {member.rol}
+                {isim} {soyisim} {email} {rol}{" "}
               </li>
               <button onClick={() => handleEdit(member, i)}>Edit</button>
             </div>

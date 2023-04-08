@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 export default function Form(props) {
-  const { addMember } = props;
-
   const emptyData = {
     isim: "",
     soyisim: "",
@@ -19,18 +17,26 @@ export default function Form(props) {
     console.log(formData);
   }
 
-  function submitHandler(e) {
-    e.preventDefault();
-    isEditting ? props.uyeDuzenle(formData) : addMember(formData);
-    addMember(formData);
-  }
-
   useEffect(() => {
     props.duzenlenecekUye
       ? setFormData(props.duzenlenecekUye)
       : setFormData(emptyData);
     props.duzenlenecekUye ? setIsEditting(true) : setIsEditting(false);
   }, [props.duzenlenecekUye]);
+
+  function submitHandler(e) {
+    e.preventDefault();
+    props.duzenlenecekUye
+      ? props.uyeDuzenle(formData)
+      : props.addMember(formData);
+  }
+
+  const handleReset = () => {
+    setFormData(emptyData);
+    setIsEditting(false);
+  };
+
+  console.log(isEditting);
 
   return (
     <div>
@@ -80,7 +86,7 @@ export default function Form(props) {
           <input type="submit" value={isEditting ? "Kaydet" : "Gönder"} />
         </span>
         <span>
-          <button onClick={() => setFormData(emptyData)}>Reset </button>
+          <button onClick={() => handleReset()}>Reset </button>
         </span>
       </form>
     </div>
