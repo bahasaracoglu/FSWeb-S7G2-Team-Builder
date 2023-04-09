@@ -28,6 +28,12 @@ function App() {
       email: "karamann@gmail.com",
       rol: "Fullstack Developer",
     },
+    {
+      isim: "Altug",
+      soyisim: "Cimen",
+      email: "babish@gmail.com",
+      rol: "Game Developer",
+    },
   ]);
 
   const [duzenlenecekUye, setDuzenlenecekUye] = useState();
