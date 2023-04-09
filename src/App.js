@@ -4,22 +4,29 @@ import { useState } from "react";
 function App() {
   const [members, setMembers] = useState([
     {
-      isim: "baha",
-      soyisim: "saracoglu",
+      isim: "Baha",
+      soyisim: "Saraçoğlu",
       email: "bhsrcgl@gmail.com",
-      rol: "frontend dev",
+      rol: "Frontend Developer",
     },
     {
-      isim: "ziyacan",
-      soyisim: "aydin",
+      isim: "Serra",
+      soyisim: "Yilmaz",
+      email: "1lightyagamisensei@gmail.com",
+      rol: "SAP Consultanı",
+    },
+
+    {
+      isim: "Ziyacan",
+      soyisim: "Aydin",
       email: "ziyacann@gmail.com",
-      rol: "backend dev",
+      rol: "Backend Developer",
     },
     {
-      isim: "kerem",
-      soyisim: "karaman",
+      isim: "Kerem",
+      soyisim: "Karaman",
       email: "karamann@gmail.com",
-      rol: "full stack dev",
+      rol: "Fullstack Developer",
     },
   ]);
 
@@ -35,7 +42,7 @@ function App() {
     setDuzenlenecekUye(member);
     setIsEditting(true);
   };
-  console.log(duzenlenecekUye);
+  console.log("duzenlenecekUye", duzenlenecekUye);
 
   function uyeDuzenle(editedMember) {
     const updatedMembers = members.map((member) =>
@@ -53,12 +60,17 @@ function App() {
       />
 
       <ul>
+        <h3>Members</h3>
         {members.map((member, i) => {
           const { isim, soyisim, email, rol } = member;
           return (
             <div key={i}>
               <li>
-                {isim} {soyisim} {email} {rol}{" "}
+                <span className="isim">
+                  {isim} {soyisim}
+                </span>
+                <span className="mail">{email}</span>
+                <span>{rol}</span>
               </li>
               <button onClick={() => handleEdit(member, i)}>Edit</button>
             </div>

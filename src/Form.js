@@ -24,27 +24,34 @@ export default function Form(props) {
     props.duzenlenecekUye ? setIsEditting(true) : setIsEditting(false);
   }, [props.duzenlenecekUye]);
 
-  function submitHandler(e) {
-    e.preventDefault();
-    props.duzenlenecekUye
-      ? props.uyeDuzenle(formData)
-      : props.addMember(formData);
+  console.log("formData", formData);
+
+  function submitHandler(event) {
+    event.preventDefault();
+    if (formData !== emptyData)
+      props.duzenlenecekUye
+        ? props.uyeDuzenle(formData)
+        : props.addMember(formData);
   }
 
-  const handleReset = () => {
+  function handleReset(event) {
+    event.preventDefault();
     setFormData(emptyData);
     setIsEditting(false);
-  };
+  }
 
-  console.log(isEditting);
+  console.log("isEditing", isEditting);
 
   return (
     <div>
-      {isEditting ? <h2>Üye Düzenle</h2> : <h2>Yeni Üye Ekle</h2>}
+      {isEditting ? <h2>Edit Member</h2> : <h2>Add Member</h2>}
       <form onSubmit={submitHandler}>
         <div>
-          <label htmlFor="isim">Name:</label>
+          <label className="label" htmlFor="isim">
+            Name
+          </label>
           <input
+            className="form-input"
             onChange={handleOnChange}
             name="isim"
             type="text"
@@ -53,8 +60,11 @@ export default function Form(props) {
           />
         </div>
         <div>
-          <label htmlFor="soyisim">Surname:</label>
+          <label className="label" htmlFor="soyisim">
+            Surname
+          </label>
           <input
+            className="form-input"
             onChange={handleOnChange}
             name="soyisim"
             type="text"
@@ -63,8 +73,11 @@ export default function Form(props) {
           />
         </div>
         <div>
-          <label htmlFor="email">email:</label>
+          <label className="label" htmlFor="email">
+            Email
+          </label>
           <input
+            className="form-input"
             onChange={handleOnChange}
             name="email"
             type="email"
@@ -73,8 +86,11 @@ export default function Form(props) {
           />
         </div>
         <div>
-          <label htmlFor="rol">Position:</label>
+          <label className="label" htmlFor="rol">
+            Position
+          </label>
           <input
+            className="form-input"
             onChange={handleOnChange}
             name="rol"
             type="text"
@@ -82,12 +98,20 @@ export default function Form(props) {
             value={formData.rol}
           />
         </div>
-        <span>
-          <input type="submit" value={isEditting ? "Kaydet" : "Gönder"} />
-        </span>
-        <span>
-          <button onClick={() => handleReset()}>Reset </button>
-        </span>
+        <div className="butonlar" style={{ textAlign: "center" }}>
+          <span>
+            <input
+              className="button-gönder"
+              type="submit"
+              value={isEditting ? "Kaydet" : "Gönder"}
+            />
+          </span>
+          <span>
+            <button onClick={handleReset} className="button-reset">
+              Reset
+            </button>
+          </span>
+        </div>
       </form>
     </div>
   );

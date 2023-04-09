@@ -1,38 +1,128 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: 5% 30%;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 2%;
+  font-family: "Hind", sans-serif;
+  font-family: "Roboto", sans-serif;
+  max-width: 25%;
+  min-width: 300px;
+  color: #455d7a;
+}
+
+.App h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+Form div {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  padding: 0.4rem 0;
+  font-size: 0.9rem;
+}
+
+.form-input {
+  border-color: #e3f6f5;
+  height: 1.5rem;
+  border-radius: 0.5rem;
+  width: 98%;
+}
+
+.label {
+  padding: 0.5rem 0;
+}
+
+.butonlar span {
+  margin: 0.3rem 0;
+}
+
+.button-gönder {
+  background-color: #7c73e6;
+  border: none;
   color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 0.5rem;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.button-reset {
+  background-color: #4c9173; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 0.5rem;
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button-gönder:hover {
+  opacity: 0.85;
+  cursor: pointer;
+}
+
+.button-reset:hover {
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+ul li {
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+ul div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.isim {
+  font-weight: 600;
+}
+.mail {
+  font-weight: 500;
+  color: #668ba4;
+  align-self: flex-end;
+}
+
+ul button {
+  background-color: #f4aeba; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 0.5rem;
+  margin: 0.7rem 0;
+  width: 20%;
+}
+
+ul button:hover {
+  opacity: 0.85;
+  cursor: pointer;
+}
+
+.isim-container {
+  display: flex;
+  justify-items: space-between;
 }
